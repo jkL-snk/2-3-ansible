@@ -11,7 +11,7 @@
 
 # Setup/install tasks, RedHat only
 - include_tasks: "setup-{{ ansible_os_family }}.yml"
-  when: ansible_os_family == RedHat
+  when: ansible_os_family == "RedHat"
 
 
 # Figure out what version of Apache is installed.
@@ -36,7 +36,7 @@
 # Configure Apache.
 - name: Configure Apache.
   include_tasks: "configure-{{ ansible_os_family }}.yml"
-  when: ansible_os_family == RedHat
+  when: ansible_os_family == "RedHat"
 
 - name: Ensure Apache has selected state and enabled on boot.
   service:
@@ -46,4 +46,4 @@
 
 - name: configure firewalld if service enabled
   include_tasks: "firewalld.yml"
-  when: apache_enabled == yes
+  when: apache_enabled == "yes"

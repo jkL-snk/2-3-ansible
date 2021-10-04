@@ -1,5 +1,11 @@
 ---
 
+- name: Install python libs to manage SELinux
+  yum:
+    name: policycoreutils-python-utils
+    state: present
+    
+
 - name: Allow full read/write access through SELinux for el7+
   seboolean:
     name: ftpd_full_access

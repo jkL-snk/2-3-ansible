@@ -21,4 +21,5 @@ vsftpd_owner: root
 vsftpd_setype: public_content_rw_t 
 vsftpd_syslog_enable: true
 vsftpd_write_enable: true
+vsftpd_anon_write_enable: true
 

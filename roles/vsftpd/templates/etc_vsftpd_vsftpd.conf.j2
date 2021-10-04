@@ -18,6 +18,8 @@ anonymous_enable={{ 'YES' if vsftpd_anonymous_enable else 'NO' }}
 {% if vsftpd_anon_root is defined %}
 anon_root={{ vsftpd_anon_root }}
 {% endif %}
+anon_upload_enable={{ 'YES' if vsftpd_anon_write_enable else 'NO' }}
+anon_mkdir_write_enable={{ 'YES' if vsftpd_anon_write_enable else 'NO' }}
 
 #
 # Access control for registered users
@@ -41,3 +43,5 @@ seccomp_sandbox=NO
 {{ setting.key }}={{ setting.value }}
 {% endfor %}
 {% endif %}
+
+pam_service_name=vsftpd
