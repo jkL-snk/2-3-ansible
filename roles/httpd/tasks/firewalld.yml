@@ -1,0 +1,6 @@
+---
+- name: configure firewalld
+  firewalld:
+    service: "{{ apache_listen_port }}"
+    permanent: yes
+    state: enabled

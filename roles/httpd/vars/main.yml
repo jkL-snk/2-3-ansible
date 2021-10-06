@@ -1,0 +1,6 @@
+---
+# vars file for httpd
+
+welcome_text: 'Welcome to my homepage!'
+index_page: /var/www/html/index.html
+firewall_access: enabled

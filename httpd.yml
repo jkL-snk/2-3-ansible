@@ -1,0 +1,6 @@
+---
+- become: yes
+  gather_facts: yes
+  hosts: localhost
+  roles: 
+  - httpd

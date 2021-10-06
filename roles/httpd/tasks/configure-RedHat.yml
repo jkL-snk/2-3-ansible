@@ -1,0 +1,6 @@
+---
+ - name: Add a line to a file if the file does not exist, without passing regexp
+    lineinfile:
+      path: "{{ index_page }}"
+      line: "{{ welcome_text }}"
+      create: yes
