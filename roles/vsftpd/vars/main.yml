@@ -1,0 +1,13 @@
+---
+
+config_file: /etc/vsftpd.conf
+anon_root_folder: /var/ftp/pub
+anon_upload_folder: /var/ftp/pub/upload
+selinux_ftpd_anon_write: "on"
+
+package_name: vsftpd
+package_state: present
+
+service_name: vsftpd
+service_state: started
+service_enabled: yes

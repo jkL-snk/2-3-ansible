@@ -1,0 +1,24 @@
+---
+# defaults file for vsftpd
+vsftpd_packages:
+  - vsftpd
+  - libsemanage-python
+
+vsftpd_service: vsftpd
+
+vsftpd_config_file: /etc/vsftpd/vsftpd.conf
+
+vsftpd_anonymous_enable: true
+vsftpd_connect_from_port_20: true
+vsftpd_group: root
+vsftpd_listen: true
+vsftpd_listen_ipv6: false
+vsftpd_local_enable: false
+vsftpd_local_umask: '022'
+vsftpd_mode: '0755'
+vsftpd_upload_mode: '0777'
+vsftpd_owner: root
+vsftpd_setype: public_content_rw_t 
+vsftpd_syslog_enable: true
+vsftpd_write_enable: true
+

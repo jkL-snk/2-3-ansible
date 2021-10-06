@@ -1,0 +1,26 @@
+---
+
+- name: Allow full read/write access through SELinux for el7+
+  seboolean:
+    name: ftpd_full_access
+    state: yes
+    persistent: yes
+  when:
+   - ansible_os_family == 'RedHat'
+   - ansible_distribution_major_version >= "7"
+
+- name: Allow full read/write access through SELinux for el6
+  seboolean:
+    name: allow_ftpd_full_access
+    state: yes
+    persistent: yes
+  when:
+   - ansible_os_family == 'RedHat'
+   - ansible_distribution_major_version == "6"
+
+- name: Allow anon writes
+  seboolean:
+    name: allow_ftpd_anon_write
+    state: yes
+    persistent: yes
+

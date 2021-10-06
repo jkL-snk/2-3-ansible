@@ -1,0 +1,39 @@
+---
+# tasks file for vsftpd
+- name: install package
+  yum:
+    name: "{{ package_name }}"
+    state: "{{ package_state }}"
+
+- name: service enabled
+  service:
+    name: "{{ service_name }}" 
+    state: "{{ service_state }}"
+    enabled: "{{ service_enabled }}"
+ 
+- name: Create home dir for anonymous user if it does not exists
+  file:
+    path: "{{ anon_root_folder }}"
+    owner: "{{ vsftpd_owner }}"
+    mode: "{{ vsftpd_mode }}"
+    setype: "{{ vsftpd_setype }}"
+    state: directory
+
+- name: Create home dir for anonymous user if it does not exists
+  file:
+    path: "{{ anon_upload_folder }}"
+    owner: "{{ vsftpd_owner }}"
+    mode: "{{ vsftpd_upload_mode }}"
+    setype: "{{ vsftpd_setype }}"
+    state: directory
+
+- name: create config
+  template:
+    src: etc_vsftpd_vsftpd.conf.j2
+    dest: "{{ vsftpd_config_file}}"
+    mode: '0600'
+  notify: restart_vsftpd
+
+- include_tasks: selinux.yml
+  when: ansible_selinux is defined and ansible_selinux != false and ansible_selinux.status == 'enabled'
+
